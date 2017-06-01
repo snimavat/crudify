@@ -1,0 +1,43 @@
+/*
+*= require side-menu.css
+*= require_self
+*/
+
+.table tr.highlight {
+    background: #F9BF3B !important;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.text-gray {
+    color: #586069 !important;
+}
+
+.subhead {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    border-bottom: 1px #e1e4e8 solid;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+.subhead-heading {
+    font-size: 24px;
+    font-weight: normal;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+.subhead-actions {
+    -webkit-align-self: center;
+    align-self: center;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+}
