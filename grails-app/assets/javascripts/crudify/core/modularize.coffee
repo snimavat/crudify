@@ -35,7 +35,13 @@ jQuery ($) ->
 #controllers
 jQuery ($) ->
   console.log "######## inside modularize"
+  initControllers()
 
+  $(document).ajaxComplete(initControllers)
+
+
+
+initControllers = () ->
   elems = $('[controller]')
   $attrServ = app.require("$attr")
 
@@ -50,5 +56,3 @@ jQuery ($) ->
       })
 
       $elem.addClass('$ctrl')
-
-

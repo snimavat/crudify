@@ -84,7 +84,6 @@ Pod.annotate = function (fn) {
     var FN_ARG = /^\s*(_?)(\S+?)\1\s*$/;
     var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
 
-
     if (!fn.$inject) {
         var inject = [];
         var fnText = fn.toString().replace(STRIP_COMMENTS, '');

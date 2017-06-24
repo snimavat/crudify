@@ -38,7 +38,7 @@ app.service "$resource", ["$log", "pathWithContext"], ($log, pathWithContext) ->
         $log.debug "[save]", @_url(), @
 
         delete @$promise #Remove promise
-        promise = $.postJSON(@._url(), @)
+        promise = $.postJSON(@._url("delete"), @)
         @$promise = promise
         promise.done (data, textStatus, jqXHR) ->
           $.extend(@, data)

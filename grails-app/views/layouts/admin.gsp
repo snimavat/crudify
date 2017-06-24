@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Lapsi admin</title>
+    <title><g:layoutTitle/></title>
 
     <asset:link rel="shortcut icon" href="lapsi/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -16,6 +16,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <g:layoutHead/>
 </head>
 <body data-context="${request.contextPath}">
 <nav class="navbar navbar-default navbar-static-top">
@@ -50,5 +52,10 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script>
+    _.templateSettings = {
+        interpolate: /\{\{(.+?)\}\}/g
+    };
+</script>
 </body>
 </html>
