@@ -34,7 +34,6 @@ jQuery ($) ->
 
 #controllers
 jQuery ($) ->
-  console.log "######## inside modularize"
   initControllers()
 
   $(document).ajaxComplete(initControllers)
@@ -44,12 +43,13 @@ jQuery ($) ->
 initControllers = () ->
   elems = $('[controller]')
   $attrServ = app.require("$attr")
+  $log = app.require("$log")
 
   $.each elems, (index, elem) ->
     $elem = $(elem)
     if not $elem.hasClass("$ctrl")
       name = $elem.attr('controller')
-      console.log "Initializing controller", name, "Element:", $elem
+      $log.debug "Initializing controller", name, "Element:", $elem
       mod = app.require(name, {
         $el: -> $elem
         $attrs: -> $attrServ($elem)
