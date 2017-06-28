@@ -10,8 +10,8 @@
 
     <asset:stylesheet href="crudify/admin.css"/>
     <asset:javascript src="crudify/admin.js" />
+    <asset:stylesheet src="font-awsome/css/font-awesome.min.css"/>
 
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
     <g:layoutHead/>
 </head>
