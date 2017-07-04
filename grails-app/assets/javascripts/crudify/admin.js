@@ -1,5 +1,5 @@
 //= require pods/pods.js
-//= require jquery/jquery-1.12.0.min.js
+//= require jquery/jquery-3.2.1.min.js
 //= require jquery-pub-sub.js
 //= require bootstrap/js/bootstrap.min.js
 //= require paginate/paginate.js
