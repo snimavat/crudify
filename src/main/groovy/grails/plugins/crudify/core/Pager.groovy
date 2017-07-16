@@ -19,4 +19,10 @@ class Pager {
 
 		offset = offset ?: 0
 	}
+
+	int getTotalPages(int totalCount) {
+		int totalPages = 1
+		if(totalCount > max) totalPages = Math.ceil(totalCount / max) as Integer
+		return totalPages
+	}
 }
