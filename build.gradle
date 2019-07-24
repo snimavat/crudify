@@ -44,7 +44,7 @@ dependencies {
     testCompile "org.grails:grails-plugin-testing"
 
     compile 'org.grails.plugins:fields:2.1.5'
-    runtime "grails.plugins:bootstrap-fields:3.0.3"
+    runtime "grails.plugins:bootstrap-fields:3.0.4"
 
     runtime 'com.bertramlabs.plugins:asset-pipeline-grails:2.14.3'
     assets 'com.bertramlabs.plugins:coffee-asset-pipeline:2.14.3'
