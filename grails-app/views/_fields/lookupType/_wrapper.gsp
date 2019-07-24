@@ -9,7 +9,12 @@
 		</g:if>
 
 		<span style="margin-left: 10px;">
-			<a class="rel-select" href="javascript:" resource="${grails.util.GrailsNameUtils.getPropertyNameRepresentation(type)}" property="${property}">Select</a> /
+			<a class="rel-select ${bound && !value ? 'text-muted' : ''}"
+			   href="javascript:"
+			   resource="${grails.util.GrailsNameUtils.getPropertyNameRepresentation(type)}"
+			   property="${property}"
+				${ bound ? "bound=${bound}" : '' }
+			>Select</a> |
 			<a class="rel-remove" href="javascript:">Clear</a>
 		</span>
 

@@ -1,6 +1,7 @@
 app.service "pathWithContext", ->
 
   (path, params) ->
+    if not path then throw ("path is required")
     context = $('body').data('context');
     uri = ""
 

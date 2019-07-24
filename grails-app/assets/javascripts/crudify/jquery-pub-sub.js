@@ -2,6 +2,10 @@
 
     var o = $({});
 
+    $.one = function() {
+        o.one.apply(o, arguments);
+    };
+
     $.subscribe = function() {
         o.on.apply(o, arguments);
     };

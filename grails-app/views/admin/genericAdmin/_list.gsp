@@ -1,3 +1,3 @@
-<f:table collection="list"/>
 
-<div id="paginate" controller="paginate", data-url="admin/author/list" data-update=".container" data-total="2"></div>
+<g:render template="rows"/>
+<div id="paginate" controller="paginate", url="admin/author/list" update=".container" total="2"></div>

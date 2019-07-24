@@ -11,8 +11,6 @@
     <asset:stylesheet href="crudify/admin.css"/>
     <asset:javascript src="crudify/admin.js" />
     <asset:stylesheet src="font-awsome/css/font-awesome.min.css"/>
-
-
     <g:layoutHead/>
 </head>
 <body data-context="${request.contextPath}">
@@ -60,12 +58,5 @@
     </div>
 </div>
 
-
-<asset:javascript src="underscore/underscore-min.js"/>
-<script>
-    _.templateSettings = {
-        interpolate: /\{\{(.+?)\}\}/g
-    };
-</script>
 </body>
 </html>

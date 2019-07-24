@@ -8,6 +8,7 @@ import org.grails.core.artefact.DomainClassArtefactHandler
 class GenericAdminController implements CrudController {
 	static namespace = "admin"
 	static defaultAction = "list"
+	AdminViewsService adminViewsService
 
 	GrailsApplication grailsApplication
 

@@ -22,7 +22,7 @@ class Pager {
 
 	int getTotalPages(int totalCount) {
 		int totalPages = 1
-		if(totalCount > max) totalPages = Math.ceil(totalCount / max) as Integer
+		if(totalCount > max) totalPages = Math.ceil((totalCount / max) as Double) as Integer
 		return totalPages
 	}
 }

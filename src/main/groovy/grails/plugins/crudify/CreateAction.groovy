@@ -2,6 +2,8 @@ package grails.plugins.crudify
 
 import grails.web.Action
 
+import static org.springframework.http.HttpStatus.OK
+
 trait CreateAction<T> implements CrudifyAction<T> {
 
 	@Action
@@ -9,30 +11,59 @@ trait CreateAction<T> implements CrudifyAction<T> {
 		T instance = createInstance()
 		if (request.method == "GET") {
 			onCreate(instance)
-			respond instance, view: "create", model: model(instance)
 			return
 		}
 
 		if (request.method == "POST") {
 			instance.validate()
 			if (instance.hasErrors()) {
-				respond instance, view: 'create', model: model(instance)
+				onValidationError(instance)
 				return
 			} else {
 				domainClass.withTransaction {
-					onSave(instance)
 					saveInstance(instance)
 				}
-				redirect action: "list", params: [domainClass: params.domainClass]
+				onSave(instance)
 			}
 
 		}
 
 	}
 
-	void onSave(T instance) {}
+	void onSave(T instance) {
+		withFormat {
+			html {
+				if(request.xhr) {
+					render status: 204
+				} else {
+					redirect action: "list", params: [domainClass: params.domainClass]
+				}
+			}
+			'json'{
+				respond instance, [status: OK]
+			}
+		}
 
-	void onCreate(T instance) {}
+	}
+
+	void onCreate(T instance) {
+		withFormat {
+			html {
+				if(request.xhr) {
+					render template: template("form"), model: model(instance)
+				} else {
+					respond instance, view: view("create"), model: model(instance)
+				}
+			}
+			'json'{
+				respond instance, [status: OK]
+			}
+		}
+	}
+
+	void onValidationError(T instance) {
+		respond instance, view: view('create'), model: model(instance)
+	}
 
 	void saveInstance(T instance) { instance.save() }
 

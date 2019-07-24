@@ -1,6 +1,13 @@
+
+###
+  Displays the response of given path in dialog.
+  and returns a promise which is resolved with the selected row.
+
+  Response must have a selectable list
+###
 app.service "relationSelectServ", ["$log", "pathWithContext"], ($log, pathWithContext) ->
 
-  (path) ->
+  (path, params = {}) ->
     deferred = $.Deferred()
     dialog = bootbox.dialog {
       title: 'Select'
@@ -17,7 +24,7 @@ app.service "relationSelectServ", ["$log", "pathWithContext"], ($log, pathWithCo
           className: 'btn-success',
           callback: () ->
             data = undefined
-            table = dialog.find("table.table tr.highlight")
+            table = dialog.find(".selectable-list .selected")
             if(table.length > 0)
               row = table.first()
               data =
@@ -29,15 +36,9 @@ app.service "relationSelectServ", ["$log", "pathWithContext"], ($log, pathWithCo
     }
 
     dialog.init ()->
-      promise = $.get(pathWithContext(path))
+      promise = $.get(pathWithContext(path), params)
       promise.done (data) ->
         dialog.find('.bootbox-body').html(data)
-        table = dialog.find("table.table tr")
-        table.click () ->
-          selected = $(this).hasClass("highlight")
-          table.removeClass("highlight")
-          if(!selected)
-            $(this).addClass("highlight")
 
 
     deferred.promise()

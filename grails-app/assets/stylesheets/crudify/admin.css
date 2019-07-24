@@ -4,7 +4,19 @@
 *= require_self
 */
 
+.highlight {
+    background: #F9BF3B !important;
+}
+
 .table tr.highlight {
+    background: #F9BF3B !important;
+}
+
+.bootbox .selectable-row {
+    cursor: pointer;
+}
+
+.bootbox .selected {
     background: #F9BF3B !important;
 }
 

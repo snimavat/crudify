@@ -30,4 +30,13 @@ public interface CrudifyAction<T> extends ControllerApi {
 
 	default Map extranModel(T instance) { return new HashMap(); }
 
+	abstract AdminViewsService getAdminViewsService();
+
+	default String view(String name) {
+		return getAdminViewsService().view(name, getDomainClass());
+	}
+
+	default String template(String name) {
+		return getAdminViewsService().template(name, getDomainClass());
+	}
 }

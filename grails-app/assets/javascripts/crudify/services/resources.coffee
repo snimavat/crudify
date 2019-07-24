@@ -8,14 +8,14 @@ app.service "$resource", ["$log", "pathWithContext"], ($log, pathWithContext) ->
       constructor: (obj) ->
          @[name] = method for name, method of obj
 
-      _url: (action) ->
+      _url: (action, params = {}) ->
           id = id ? @id
-          pathWithContext("#{url}/#{action}/#{id}.json")
+          pathWithContext("#{url}/#{action}/#{id}.json", params)
 
-      @get = (id) ->
+      this.get = (id, params = {}) ->
         Resource r = new Resource(id:id)
-        console.log "[Get]", r._url("get")
-        promise = $.getJSON(r._url("get"))
+        console.log "[Get]", r._url("get", params)
+        promise = $.getJSON(r._url("get", params))
         r.$promise = promise
 
         promise.done (data) ->
@@ -23,14 +23,15 @@ app.service "$resource", ["$log", "pathWithContext"], ($log, pathWithContext) ->
 
         return r
 
-      save: () ->
-        $log.debug "[save]", @_url("create"), @
-
+      save: () =>
+        url = if (@.id) then @_url("edit") else @_url("create")
+        $log.debug "[save]", url, @
         delete @$promise #Remove promise
-        promise = $.postJSON(@._url("create"), @)
+        promise = $.postJSON(url, @)
         @$promise = promise
-        promise.done (data, textStatus, jqXHR) ->
+        promise.done (data, textStatus, jqXHR) =>
           $.extend(@, data)
+          @id = data.id #XXX hack - id is not being copied otherwise
 
         return @
 
