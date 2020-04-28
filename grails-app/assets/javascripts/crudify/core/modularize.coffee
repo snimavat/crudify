@@ -43,66 +43,140 @@ jQuery ($) ->
       'dataType': 'json',
     })
 
+  $.delete = (url, data = {}) ->
+    return $.ajax({
+      'type': 'DELETE',
+      'url': url,
+      'contentType': 'application/json',
+      'data':JSON.stringify(data),
+      'dataType': 'json',
+    })
+
 
 #controllers
 jQuery ($) ->
   initApp()
-  $(document).ajaxComplete(initApp)
+  observe($("#main-content"))
+  #$(document).ajaxComplete(initApp)
+  return
+
+$attrServ = undefined
+$log = undefined
 
 initApp = () ->
-  initDirectives()
-  initControllers()
-  $.publish('app.loaded')
-
-initControllers = () ->
-  elems = $('[controller]')
   $attrServ = app.require("$attrServ")
   $log = app.require("$log")
+  body = $("body")
+  initDirectives(body)
+  initControllers(body)
+
+  $.publish('app.loaded')
+
+initControllers = (elem) ->
+  elem = elem ?= $("body")
+  elems = elem.find('[controller]')
 
   $.each elems, (index, elem) ->
     $elem = $(elem)
-    if not $elem.hasClass("$ctrl")
-      name = $elem.attr('controller')
-      if(!name) then return
-      $log.debug "Initializing controller", name, "Element:", $elem
-      mod = app.require(name, {
-        $el: -> $elem
-        $attrs: -> $attrServ($elem)
-      })
+    initController($elem)
 
-      $elem.addClass('$ctrl')
+  initController(elem, true)
+  return true
 
-initDirectives = () ->
-  $attrServ = app.require("$attrServ")
-  $log = app.require("$log")
+initController = ($elem, check = false) ->
+  return if check and (not $elem.is("[controller]"))
+  if not $elem.hasClass("$ctrl")
+    name = $elem.attr('controller')
+    if(!name) then return
+    $log.debug "Initializing controller", name, "Element:", $elem
+    mod = app.require(name, {
+      $el: -> $elem
+      $attrs: -> $attrServ($elem)
+    })
 
+    $elem.addClass('$ctrl $$touched')
+
+initDirectives = (elem) ->
+  elem = elem ? $("body")
   _.each directives, (opts, d) ->
     directive = _.dashed(d)
     restrict = opts.restrict
-    selector = undefined
-
-    if(not restrict)
-      selector = "#{directive}, [#{directive}], .#{directive}"
-    else
-      arr = []
-      if restrict.indexOf('E') != -1
-        arr.push "#{directive}"
-
-      if restrict.indexOf('A') != -1
-        arr.push "[#{directive}]"
-
-      if restrict.indexOf('C') != -1
-        arr.push ".#{directive}"
-
-      selector = arr.join(",")
-
-    _.each $(selector), (elem) ->
+    selector = directiveRestrict(directive, restrict)
+    _.each elem.find(selector), (elem) ->
       $elem = $(elem)
-      if not $elem.hasClass("$dr:#{directive}")
-        $log.debug "init:directive ", d, "Element:", $elem
-        app.require(d, {
-          $el: -> $elem
-          $attrs: -> $attrServ($elem)
-        })
+      initDirective($elem, d)
 
-        $elem.addClass("$dr:#{directive}")
+    initDirective(elem, d, true)
+  return true
+
+initDirective = ($elem, directive, check = false) ->
+  if check
+    opts = directives[directive]
+    return if not opts
+    selector = directiveRestrict(directive, opts.restrict)
+    return if not $elem.is(selector)
+
+  if not $elem.hasClass("$dr:#{directive}")
+    $log.debug "init:directive ", directive, "Element:", $elem
+    app.require(directive, {
+      $el: -> $elem
+      $attrs: -> $attrServ($elem)
+    })
+
+    $elem.addClass("$dr:#{directive} $$touched")
+
+directiveRestrict = (directive, restrict) ->
+  arr = []
+  selector = undefined
+
+  if(not restrict)
+    selector = "#{directive}"
+  else
+    if restrict.indexOf('E') != -1
+      arr.push "#{directive}"
+
+    if restrict.indexOf('A') != -1
+      arr.push "[#{directive}]"
+
+    if restrict.indexOf('C') != -1
+      arr.push ".#{directive}"
+
+    selector = arr.join(",")
+
+  return selector
+
+
+#Observer dom and init directives/controllers
+observe = (target) ->
+  target = target.get(0)
+  # Create an observer instance
+  ignored = ["LINK", "SCRIPT"]
+  observer = new MutationObserver((mutations) ->
+    mutations.forEach (mutation) ->
+      newNodes = mutation.addedNodes
+      # DOM NodeList
+      if newNodes != null
+        $nodes = $(newNodes)
+        # jQuery set
+        $nodes.each ->
+          #Ignore text nodes or codemirror changes
+          return if (this.nodeType is 3) or (this.className.indexOf("CodeMirror") isnt -1)
+          return if this.nodeName in ignored
+          $node = $(this)
+          return if $node.parents(".no-mutation").length > 0
+          console.debug 'Node added', $node
+          initControllers($node)
+          initDirectives($node)
+          return
+      return
+    return
+  )
+  # Configuration of the observer:
+  config =
+    childList: true
+    subtree: true
+    characterData: false
+    attributes: false
+
+  observer.observe target, config
+  return
