@@ -9,8 +9,11 @@ app.service "$resource", ["$log", "pathWithContext"], ($log, pathWithContext) ->
          @[name] = method for name, method of obj
 
       _url: (action, params = {}) ->
-          id = id ? @id
-          pathWithContext("#{url}/#{action}/#{id}.json", params)
+          id = params.id ? @id
+          if id?
+            return pathWithContext("#{url}/#{action}/#{id}.json", params)
+          else
+            return pathWithContext("#{url}/#{action}.json", params)
 
       this.get = (id, params = {}) ->
         Resource r = new Resource(id:id)
