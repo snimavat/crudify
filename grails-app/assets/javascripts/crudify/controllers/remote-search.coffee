@@ -22,7 +22,11 @@ app.controller "remoteSearch", ["$el", "$attrs", "$attrServ", "$log", "pathWithC
     if xhr then xhr.abort()
     xhr = $.get(path($attrs.path), data)
     xhr.done (data) ->
-      $($attrs.target).replaceWith(data)
+      target = $(data).find($attrs.target)
+      if(target.length)
+        $($attrs.target).replaceWith(target.get(0))
+      else
+        $($attrs.target).replaceWith(data)
 
   debounced = _.debounce(search, 500)
   $el.on("keyup", debounced)
