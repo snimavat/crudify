@@ -16,7 +16,7 @@ app.service "$resource", ["$log", "pathWithContext"], ($log, pathWithContext) ->
             return pathWithContext("#{url}/#{action}.json", params)
 
       this.get = (id, params = {}) ->
-        Resource r = new Resource(id:id)
+        r = new Resource(id:id)
         console.log "[Get]", r._url("get", params)
         promise = $.getJSON(r._url("get", params))
         r.$promise = promise

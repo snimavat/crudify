@@ -112,6 +112,10 @@ Pod.invoke = function (fn, self) {
     return fn.apply(self, mods)
 };
 
+isClass = function (func) {
+    return typeof func === 'function' && /^class\s/.test(Function.prototype.toString.call(func));
+};
+
 // Requires a module. This fetches the module and all of its dependencies.
 // @param String/Array req: the id (or list of ids) to require.
 // @param Function callback: an optional callback to inject the required modules into.
@@ -151,7 +155,8 @@ Pod.require = function (req, overrides, callback) {
                 mod._ = 1;
 
                 // Run factory function with recursive require call to fetch dependencies:
-                mod.e = mod.f.apply(null, this.require(mod.d, overrides));
+                if(isClass(mod.f)) mod.e = new mod.f(...this.require(mod.d, overrides));
+                else mod.e = mod.f.apply(null, this.require(mod.d, overrides));
 
                 // Release module from the active path.
                 mod._ = 0;
