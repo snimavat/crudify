@@ -52,6 +52,8 @@ jQuery ($) ->
       'dataType': 'json',
     })
 
+  $.fn.tagName = () ->
+    return this.prop("tagName").toLowerCase()
 
 #controllers
 jQuery ($) ->
