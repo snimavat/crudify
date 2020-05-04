@@ -180,5 +180,5 @@ observe = (target) ->
     characterData: false
     attributes: false
 
-  observer.observe target, config
+  if target then observer.observe target, config
   return
