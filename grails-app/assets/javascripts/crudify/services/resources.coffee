@@ -10,7 +10,7 @@ app.service "$resource", ["$log", "pathWithContext"], ($log, pathWithContext) ->
 
       _url: (action, params = {}) ->
           id = params.id ? @id
-          if id?
+          if id
             return pathWithContext("#{url}/#{action}/#{id}.json", params)
           else
             return pathWithContext("#{url}/#{action}.json", params)
