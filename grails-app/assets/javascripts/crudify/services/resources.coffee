@@ -26,6 +26,18 @@ app.service "$resource", ["$log", "pathWithContext"], ($log, pathWithContext) ->
 
         return r
 
+      this.doPost = (action, params = {}) ->
+        r = new Resource(id:params.id)
+        console.log "[POST]", r._url(action, params)
+        promise = $.getJSON(r._url(action, params))
+        return promise
+
+      this.doGet = (action, params = {}) ->
+        r = new Resource(id:params.id)
+        console.log "[POST]", r._url(action, params)
+        promise = $.postJSON(r._url(action, params))
+        return promise
+
       save: () =>
         url = if (@.id) then @_url("edit") else @_url("create")
         $log.debug "[save]", url, @
@@ -48,6 +60,8 @@ app.service "$resource", ["$log", "pathWithContext"], ($log, pathWithContext) ->
           $.extend(@, data)
 
         return @
+
+
 
     return Resource
 
