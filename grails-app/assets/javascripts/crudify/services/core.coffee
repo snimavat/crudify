@@ -10,6 +10,14 @@ app.service "$attrServ", ->
 
     return attributes
 
+
+app.service "$location", ["$path"], (path) ->
+
+  (url, data) ->
+    p = path(url, data)
+    window.location = p
+
+
 #Generic form helpers
 app.service "$form", ["$log", "pathWithContext"], ($log, $path) ->
 
