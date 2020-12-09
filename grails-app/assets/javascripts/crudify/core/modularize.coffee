@@ -90,11 +90,16 @@ initController = ($elem, check = false) ->
   if not $elem.hasClass("$ctrl")
     name = $elem.attr('controller')
     if(!name) then return
-    $log.debug "Initializing controller", name, "Element:", $elem
-    mod = app.require(name, {
-      $el: -> $elem
-      $attrs: -> $attrServ($elem)
-    })
+    ctrls = [name]
+    if name.includes(",")
+      ctrls = name.split(",")
+
+    _.each(ctrls, (ctrlName) ->
+      $log.debug "Initializing controller", ctrlName, "Element:", $elem
+      app.require(name.trim(), {
+        $el: -> $elem
+        $attrs: -> $attrServ($elem)
+      }))
 
     $elem.addClass('$ctrl $$touched')
 
