@@ -1,6 +1,9 @@
 //= require pods/pods.js
+//= require jquery/jquery-3.2.1.min.js
 //= require jquery-pub-sub.js
-//= require paginate/paginate.js
-//= require crudify/core/modularize.js
-//= require_tree services
-//= require_tree controllers
+//= require underscore/underscore-min.js
+//= require underscore/mixins.js
+//= require core/modularize.js
+//= require services/core.js
+//= require services/resources.js
+//= require controllers/BaseCtrl.js

@@ -74,3 +74,31 @@ app.service "$form", ["$log", "pathWithContext"], ($log, $path) ->
     return p
 
 
+
+pathWithContext = (path, params) ->
+  if not path then throw ("path is required")
+  context = $('body').data('context');
+  uri = ""
+
+  if(context == undefined) then throw ("context path not defined")
+
+  if(!path.startsWith("/"))
+    uri = context + "/" + path
+  else
+    uri = context + path
+
+  if(_.size(params) > 0)
+    uri = uri + "?" + $.param(params)
+
+  return uri
+
+
+app.service "pathWithContext", -> pathWithContext
+app.service "$path", -> pathWithContext
+
+
+app.module "$log", ->
+  log:   -> console.log.apply(console, arguments)
+  info:  -> console.info.apply(console, arguments)
+  debug: -> console.debug.apply(console, arguments)
+  error: -> console.error.apply(console, arguments)

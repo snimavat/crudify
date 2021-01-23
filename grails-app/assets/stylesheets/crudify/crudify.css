@@ -1,0 +1,23 @@
+/*
+*= require tailwind/tailwind.css
+*= require tailwind/tailwind-ext.css
+*= require_self
+*/
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background: #F3F3F3;
+    font-weight: 400;
+    color: #333;
+}
+
+*, ::after, ::before {
+    border: solid 0px;
+}
+
+.d-none {
+    display: none;
+}

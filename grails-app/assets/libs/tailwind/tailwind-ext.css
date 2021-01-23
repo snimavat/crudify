@@ -1,0 +1,250 @@
+input.appearance-none {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-style: none;
+  box-shadow: none;
+  outline: 0;
+}
+
+textarea.appearance-none {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-style: none;
+  box-shadow: none;
+  outline: 0;
+}
+
+/* Cards */
+
+.pad {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.card {
+  position: relative;
+  overflow-wrap: break-word;
+  background-clip: border-box;
+}
+
+/* Cards end */
+
+@media (min-width: 1024px) {
+  .lg\:pad-x-lg {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+p, ul, ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem
+}
+
+a {
+  text-decoration: none;
+  --tw-text-opacity: 1;
+  color: rgba(67, 56, 202, var(--tw-text-opacity))
+}
+
+a:hover {
+  text-decoration: none;
+  --tw-text-opacity: 1;
+  color: rgba(55, 48, 163, var(--tw-text-opacity))
+}
+
+a.muted {
+  --tw-text-opacity: 1;
+  color: rgba(100, 116, 139, var(--tw-text-opacity))
+}
+
+a.muted:hover {
+  --tw-text-opacity: 1;
+  color: rgba(55, 48, 163, var(--tw-text-opacity))
+}
+
+/* Headings */
+
+h1 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+h2, h3, h4 {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  --tw-text-opacity: 1;
+  color: rgba(30, 41, 59, var(--tw-text-opacity))
+}
+
+ul, ol {
+  list-style-position: outside;
+  margin-left: 1.25rem
+}
+
+ul {
+  list-style-type: disc
+}
+
+ol {
+  list-style-type: decimal
+}
+
+ul ul, ol ul, ul ol, ol ol {
+  margin-top: 0px;
+  margin-left: 1rem
+}
+
+ul ul {
+  list-style-type: circle;
+}
+
+ol ol, ul ol {
+  list-style-type: lower-roman;
+}
+
+ul.list-none {
+  margin: 0px
+}
+
+code {
+  font-size: inherit;
+  font-family: inherit;
+  --tw-text-opacity: 1;
+  color: rgba(99, 102, 241, var(--tw-text-opacity))
+}
+
+hr {
+  border-color: #dfdfdf;
+}
+
+.badge {
+  background-color: #cbd5e1;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  line-height: 1rem;
+  margin-right: 0.25rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  --tw-text-opacity: 1;
+  color: rgba(71, 85, 105, var(--tw-text-opacity))
+}
+
+blockquote {
+  background-color: #f9f9f9;
+  padding: 0.75rem;
+  font-style: italic
+}
+
+blockquote:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f10d";
+  position: relative;
+  top: -8px;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  --tw-text-opacity: 1;
+  color: rgba(148, 163, 184, var(--tw-text-opacity))
+}
+
+blockquote:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f10e";
+  position: relative;
+  top: 8px;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  --tw-text-opacity: 1;
+  color: rgba(148, 163, 184, var(--tw-text-opacity))
+}
+
+blockquote p {
+  display: inline-block;
+}
+
+/* utilities */
+
+.muted {
+  --tw-text-opacity: 1;
+  color: rgba(100, 116, 139, var(--tw-text-opacity))
+}
+
+.text-warn {
+  color: #742a2a;
+}
+
+.bg-warn {
+  background-color: #742a2a;
+}
+
+.btn-rounded {
+  border-radius: 9999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  width: 1.5rem
+}
+
+.btn-rounded.xxs {
+  border-radius: 9999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.25rem;
+  font-size: .5rem;
+  width: 1.25rem
+}
+
+.btn-rounded-lg {
+  border-radius: 9999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  width: 2rem
+}
+
+.card-content img {
+  display: inline-block;
+}
+
+/*** Tables **/
+
+table {
+  width: 100%
+}
+
+tr {
+  width: 100%
+}
+
+td, th {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem
+}
+
+tr:nth-child(even) {
+  background: #f5f5f5;
+}

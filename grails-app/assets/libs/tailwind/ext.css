@@ -1,0 +1,190 @@
+input.appearance-none {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-style: none;
+  box-shadow: none;
+  outline: 0;
+}
+
+textarea.appearance-none {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-style: none;
+  box-shadow: none;
+  outline: 0;
+}
+
+/* Cards */
+
+.pad {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.card {
+  position: relative;
+  overflow-wrap: break-word;
+  background-clip: border-box;
+}
+
+/* Cards end */
+
+@media (min-width: 1024px) {
+  .lg\:pad-x-lg {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+p, ul, ol {
+  @apply my-2
+}
+
+a {
+  text-decoration: none;
+  @apply text-indigo-700
+}
+
+a:hover {
+  text-decoration: none;
+  @apply text-indigo-800
+}
+
+a.muted {
+  @apply text-gray-500
+}
+
+a.muted:hover {
+  @apply text-indigo-800
+}
+
+  /* Headings */
+
+h1 {
+  @apply text-2xl my-4;
+}
+
+h2, h3, h4 {
+  @apply text-base my-2 font-semibold text-gray-800
+}
+
+ul, ol {
+  @apply list-outside ml-5
+}
+
+ul {
+ @apply list-disc
+}
+
+ol {
+  @apply list-decimal
+}
+
+ul ul, ol ul, ul ol, ol ol {
+  @apply ml-4 mt-0
+}
+
+ul ul {
+  list-style-type: circle;
+}
+
+ol ol, ul ol {
+  list-style-type: lower-roman;
+}
+
+ul.list-none {
+  @apply m-0
+}
+
+code {
+  font-size: inherit;
+  font-family: inherit;
+  @apply text-indigo-500
+}
+
+hr {
+  border-color: #dfdfdf;
+}
+
+.badge {
+  @apply text-xs text-gray-600 mr-1 bg-gray-300 leading-4 px-1 rounded
+}
+
+blockquote {
+  background-color: #f9f9f9;
+  @apply p-3 italic
+}
+
+blockquote:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f10d";
+  position: relative;
+  top: -8px;
+  @apply text-xs text-gray-400
+}
+
+blockquote:after {
+   font-family: "Font Awesome 5 Free";
+   font-weight: 900;
+   content: "\f10e";
+   position: relative;
+   top: 8px;
+   @apply text-xs text-gray-400
+ }
+
+blockquote p {
+  display: inline-block;
+}
+
+/* utilities */
+
+.muted {
+  @apply text-gray-500
+}
+
+.text-warn {
+  color: #742a2a;
+}
+
+.bg-warn {
+  background-color: #742a2a;
+}
+
+.btn-rounded {
+  @apply rounded-full h-6 w-6 text-xs flex items-center justify-center cursor-pointer
+}
+
+.btn-rounded.xxs {
+  @apply rounded-full h-5 w-5 text-xxs flex items-center justify-center cursor-pointer
+}
+
+.btn-rounded-lg {
+  @apply rounded-full h-8 w-8 text-lg flex items-center justify-center cursor-pointer
+}
+
+.card-content img {
+  display: inline-block;
+}
+
+/*** Tables **/
+
+table {
+  @apply w-full
+}
+
+tr {
+  @apply w-full
+}
+
+td, th {
+  @apply py-1 px-1
+}
+
+tr:nth-child(even) {
+  background: #f5f5f5;
+}
