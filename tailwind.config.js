@@ -46,13 +46,13 @@ module.exports = {
 
         float: false,
         tableLayout: false,
-        gap: false,
+        gap: true,
 
         gridAutoFlow: false,
-        gridTemplateColumns: false,
-        gridColumn: false,
-        gridColumnStart: false,
-        gridColumnEnd: false,
+        gridTemplateColumns: true,
+        gridColumn: true,
+        gridColumnStart: true,
+        gridColumnEnd: true,
         gridTemplateRows: false,
         gridRow: false,
         gridRowStart: false,
