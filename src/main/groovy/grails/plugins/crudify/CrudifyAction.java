@@ -10,9 +10,9 @@ public interface CrudifyAction<T> extends ControllerApi {
 
 	abstract Class<T> getDomainClass();
 
-	default T createInstance() throws IllegalAccessException, InstantiationException {
+	default T createInstance(Object data) throws IllegalAccessException, InstantiationException {
 		T instance = getDomainClass().newInstance();
-		bindData(instance, getObjectToBind());
+		bindData(instance, data);
 		return instance;
 	};
 
@@ -30,13 +30,15 @@ public interface CrudifyAction<T> extends ControllerApi {
 
 	default Map extranModel(T instance) { return new HashMap(); }
 
-	abstract AdminViewsService getAdminViewsService();
+	//abstract AdminViewsService getAdminViewsService();
 
 	default String view(String name) {
-		return getAdminViewsService().view(name, getDomainClass());
+		return name;
+		//return getAdminViewsService().view(name, getDomainClass());
 	}
 
 	default String template(String name) {
-		return getAdminViewsService().template(name, getDomainClass());
+		return name;
+		//return getAdminViewsService().template(name, getDomainClass());
 	}
 }

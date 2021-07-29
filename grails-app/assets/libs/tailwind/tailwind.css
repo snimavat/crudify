@@ -3120,7 +3120,7 @@
   border-width: 2px
 }
 
-.border-default {
+.border {
   border-width: 1px
 }
 
@@ -3156,19 +3156,19 @@
   border-left-width: 2px
 }
 
-.border-t-default {
+.border-t {
   border-top-width: 1px
 }
 
-.border-r-default {
+.border-r {
   border-right-width: 1px
 }
 
-.border-b-default {
+.border-b {
   border-bottom-width: 1px
 }
 
-.border-l-default {
+.border-l {
   border-left-width: 1px
 }
 
@@ -6389,6 +6389,31 @@
   min-width: -webkit-max-content;
   min-width: -moz-max-content;
   min-width: max-content
+}
+
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain
+}
+
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover
+}
+
+.object-fill {
+  -o-object-fit: fill;
+     object-fit: fill
+}
+
+.object-none {
+  -o-object-fit: none;
+     object-fit: none
+}
+
+.object-scale-down {
+  -o-object-fit: scale-down;
+     object-fit: scale-down
 }
 
 .opacity-0 {
@@ -18247,7 +18272,7 @@
     border-width: 2px
   }
 
-  .sm\:border-default {
+  .sm\:border {
     border-width: 1px
   }
 
@@ -18283,19 +18308,19 @@
     border-left-width: 2px
   }
 
-  .sm\:border-t-default {
+  .sm\:border-t {
     border-top-width: 1px
   }
 
-  .sm\:border-r-default {
+  .sm\:border-r {
     border-right-width: 1px
   }
 
-  .sm\:border-b-default {
+  .sm\:border-b {
     border-bottom-width: 1px
   }
 
-  .sm\:border-l-default {
+  .sm\:border-l {
     border-left-width: 1px
   }
 
@@ -21516,6 +21541,31 @@
     min-width: -webkit-max-content;
     min-width: -moz-max-content;
     min-width: max-content
+  }
+
+  .sm\:object-contain {
+    -o-object-fit: contain;
+       object-fit: contain
+  }
+
+  .sm\:object-cover {
+    -o-object-fit: cover;
+       object-fit: cover
+  }
+
+  .sm\:object-fill {
+    -o-object-fit: fill;
+       object-fit: fill
+  }
+
+  .sm\:object-none {
+    -o-object-fit: none;
+       object-fit: none
+  }
+
+  .sm\:object-scale-down {
+    -o-object-fit: scale-down;
+       object-fit: scale-down
   }
 
   .sm\:opacity-0 {
@@ -33296,7 +33346,7 @@
     border-width: 2px
   }
 
-  .lg\:border-default {
+  .lg\:border {
     border-width: 1px
   }
 
@@ -33332,19 +33382,19 @@
     border-left-width: 2px
   }
 
-  .lg\:border-t-default {
+  .lg\:border-t {
     border-top-width: 1px
   }
 
-  .lg\:border-r-default {
+  .lg\:border-r {
     border-right-width: 1px
   }
 
-  .lg\:border-b-default {
+  .lg\:border-b {
     border-bottom-width: 1px
   }
 
-  .lg\:border-l-default {
+  .lg\:border-l {
     border-left-width: 1px
   }
 
@@ -36565,6 +36615,31 @@
     min-width: -webkit-max-content;
     min-width: -moz-max-content;
     min-width: max-content
+  }
+
+  .lg\:object-contain {
+    -o-object-fit: contain;
+       object-fit: contain
+  }
+
+  .lg\:object-cover {
+    -o-object-fit: cover;
+       object-fit: cover
+  }
+
+  .lg\:object-fill {
+    -o-object-fit: fill;
+       object-fit: fill
+  }
+
+  .lg\:object-none {
+    -o-object-fit: none;
+       object-fit: none
+  }
+
+  .lg\:object-scale-down {
+    -o-object-fit: scale-down;
+       object-fit: scale-down
   }
 
   .lg\:opacity-0 {

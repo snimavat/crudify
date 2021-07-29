@@ -10,7 +10,7 @@ import org.grails.datastore.mapping.query.api.BuildableCriteria
 
 trait ListAction<T> implements CrudifyAction<T> {
 
-	PagedResultList<T> listCriteria() {
+	List<T> listCriteria() {
 		Class d = domainClass
 		Pager pager = new Pager(params)
 		BuildableCriteria criteria = (BuildableCriteria)InvokerHelper.invokeStaticMethod(d, "createCriteria", null)
@@ -19,13 +19,18 @@ trait ListAction<T> implements CrudifyAction<T> {
 
 	@Action
 	def list() {
-		PagedResultList<T> list = listCriteria()
-		Map resp = [list:list, total:list?.totalCount ?: 0]
+		List<T> list = listCriteria()
+		Map resp = listModel(list)
 		if(request.xhr) {
 			render template: template('list'), model: resp
 		} else {
 			respond resp, view: view('list'), model: resp
 		}
+	}
+
+	Map listModel(List list) {
+		int total = list instanceof PagedResultList ? list.totalCount : list.size()
+		return [list:list, total:total]
 	}
 
 	@Action

@@ -8,7 +8,8 @@ trait CreateAction<T> implements CrudifyAction<T> {
 
 	@Action
 	def create() {
-		T instance = createInstance()
+		def data = getObjectToBind()
+		T instance = createInstance(data)
 		if (request.method == "GET") {
 			onCreate(instance)
 			return
@@ -21,7 +22,7 @@ trait CreateAction<T> implements CrudifyAction<T> {
 				return
 			} else {
 				domainClass.withTransaction {
-					saveInstance(instance)
+					saveInstance(instance, data)
 				}
 				onSave(instance)
 			}
@@ -65,6 +66,6 @@ trait CreateAction<T> implements CrudifyAction<T> {
 		respond instance, view: view('create'), model: model(instance)
 	}
 
-	void saveInstance(T instance) { instance.save() }
+	void saveInstance(T instance, Object data) { instance.save() }
 
 }

@@ -1,0 +1,18 @@
+.slideout-actions {
+    position:absolute;
+    top: calc(25vh);
+}
+
+.slideout {
+    transform: translate(calc(100vw), 0);
+    position : fixed;
+    top: 0;
+    bottom: 0;
+    transition: transform 0.5s;
+}
+
+.slideout.open {
+    transform: translate(0, 0);
+    transition: transform 0.5s;
+    z-index: 40;
+}

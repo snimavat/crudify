@@ -96,7 +96,7 @@ initController = ($elem, check = false) ->
 
     _.each(ctrls, (ctrlName) ->
       $log.debug "Initializing controller", ctrlName, "Element:", $elem
-      app.require(name.trim(), {
+      app.require(ctrlName.trim(), {
         $el: -> $elem
         $attrs: -> $attrServ($elem)
       }))

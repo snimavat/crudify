@@ -16,7 +16,7 @@ module.exports = {
             'lg': '1024px',
         },
         borderWidth: {
-            default: '1px',
+            DEFAULT: '1px',
             '0': '0',
             '2': '2px'
         },
@@ -75,7 +75,7 @@ module.exports = {
         fill: false,
         letterSpacing: false,
 
-        objectFit: false,
+        //objectFit: false,
         objectPosition: false,
 
         pointerEvents: false,

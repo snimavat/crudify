@@ -5,8 +5,8 @@ buildscript {
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
-        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.14.3"
-        classpath 'com.bertramlabs.plugins:coffee-asset-pipeline:2.14.3'
+        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:3.1.0"
+        classpath 'com.bertramlabs.plugins:coffee-asset-pipeline:3.1.0'
     }
 }
 
@@ -46,8 +46,9 @@ dependencies {
     compile 'org.grails.plugins:fields:2.1.5'
     runtime "grails.plugins:bootstrap-fields:3.0.4"
 
-    runtime 'com.bertramlabs.plugins:asset-pipeline-grails:2.14.3'
-    assets 'com.bertramlabs.plugins:coffee-asset-pipeline:2.14.3'
+    runtime "com.bertramlabs.plugins:asset-pipeline-grails:3.1.0"
+    assets 'com.bertramlabs.plugins:coffee-asset-pipeline:3.1.0'
+
 }
 
 bootRun {
